@@ -8,7 +8,7 @@ const checkPermission = require("../middlewares/checkPermission.middleware");
 
 
 router.use(authenticate);
-routera
+router
     .get("/", checkPermission("read_user"), asyncHandler(userController.queryUsers))
     .get("/info", asyncHandler(userController.userInfo))
     .get("/all", checkPermission("read_user"), asyncHandler(userController.getAllUsers));
