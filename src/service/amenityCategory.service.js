@@ -1,0 +1,1 @@
+const {amenityCategoryRepository:{create, update, categories, category, deleteById}} = require("../repository")
