@@ -33,11 +33,18 @@ const description = JOI.string().min(3).max(50).required().messages({
 
 const mongooseId = JOI.string().length(24).hex().required();
 
+const phone = JOI.string().min(10).max(10).required().messages({
+    "string.min": "Phone must be at least 10 characters long",
+    "string.max": "Phone must not exceed 10 characters",
+    "any.required": "Phone is required"
+})
+
 module.exports = {
     // Authentication Validations
     email,
     password,
     name,
     description,
-    mongooseId
+    mongooseId,
+    phone
 }

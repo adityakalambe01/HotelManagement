@@ -9,20 +9,11 @@ const refFields = require("./refFields/user.refFields");
 const userSchema = new mongoose.Schema({
     name: { type: String, required: true },
     email: { type: String, unique: true, required: true, lowercase: true },
-    password: { type: String, required: true },
-    phone: String,
-
-    role: {
-        type: String,
-        enum: ["platform_admin", "hotel_owner", "hotel_staff", "customer"],
-        default: "customer"
-    },
-
-    // tenant reference (hotel)
-    hotel: { type: mongoose.Schema.Types.ObjectId, ref: "Hotel" },
-
-    bookings: [{ type: mongoose.Schema.Types.ObjectId, ref: "Booking" }],
-    subscription: { type: mongoose.Schema.Types.ObjectId, ref: "Subscription" }, // if hotel owner
+    password: { type: String, required: true, private: true },
+    phone: {type: String, required: true},
+    aadhaarNumber: {type: String, length: 12},
+    panCardNumber: {type:String, length: 10},
+    isEmailVerified: {type:Boolean, default:false},
 }, { timestamps: true });
 
 userSchema.plugin(safeSoftDeletePlugin, {

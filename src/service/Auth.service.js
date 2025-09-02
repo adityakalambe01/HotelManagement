@@ -22,8 +22,8 @@ exports.login = async (email, password) => {
     if (!isValidPassword) {
         throw new ApiError(httpCodes.UNAUTHORIZED, "Incorrect password");
     }
-    user = pick(user.toObject(),['_id', 'name', 'email', 'createdAt', 'updatedAt'])
-    user.role.permissions = user.role.permissions.map(p => ({_id: p._id, name: p.name, description: p.description}));
+    // user = pick(user.toObject(),['_id', 'name', 'email', 'createdAt', 'updatedAt'])
+    // user.role.permissions = user.role.permissions.map(p => ({_id: p._id, name: p.name, description: p.description}));
     const token = await userRepository.createToken(pick(user, ['_id', 'name', 'email']));
     return {token, user};
 }

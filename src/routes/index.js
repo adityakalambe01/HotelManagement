@@ -2,6 +2,7 @@ const router = require("../package").express.Router();
 const config = require("../config");
 const authRoutes = require("./auth.routes");
 const userRoutes = require("./user.routes");
+const amenityCategory = require("./amenityCategory.routes");
 
 const defaultRoutes = [
     {
@@ -12,6 +13,10 @@ const defaultRoutes = [
         path: "/user",
         route: userRoutes
     },
+    {
+        path: "/amenity-category",
+        route: amenityCategory
+    }
 ]
 
 defaultRoutes.forEach((route) => {
