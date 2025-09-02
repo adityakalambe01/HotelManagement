@@ -1,4 +1,4 @@
-const { UserModel: User } = require("../models");
+const { userModel: User } = require("../models");
 const {jwtToken} = require("../package");
 const {jwtSecret} = require("../config");
 
