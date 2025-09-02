@@ -2,5 +2,6 @@ module.exports = {
     ApiError: require('./ApiError'),
     pick: require('./pick'),
     reqQueryFilterOptionsPicker: require("./queryFilterOptionPicker"),
-    paramsPicker: require("./paramsPicker")
+    paramsPicker: require("./paramsPicker"),
+    emailUtil: require("./email.util"),
 }

@@ -22,3 +22,5 @@ exports.createToken = async(user) => jwtToken.sign(user, jwtSecret);
 exports.getAllUsers = async(filter={}, options={}) => await User.find(filter).setOptions({depth: parseInt(options.depth) || 0});
 
 exports.queryUsers = async(filter={},options={}) => await User.paginate(filter, {...options, depth: parseInt(options.depth) || 0});
+
+exports.markEmailAsVerified = async (userId) => await User.findByIdAndUpdate(userId, {isEmailVerified: true}, {new: true})

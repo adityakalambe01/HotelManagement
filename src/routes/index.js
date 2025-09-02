@@ -3,6 +3,7 @@ const config = require("../config");
 const authRoutes = require("./auth.routes");
 const userRoutes = require("./user.routes");
 const amenityCategory = require("./amenityCategory.routes");
+const emailVerificationRoutes = require("./emailVerification.routes");
 
 const defaultRoutes = [
     {
@@ -16,7 +17,11 @@ const defaultRoutes = [
     {
         path: "/amenity-category",
         route: amenityCategory
-    }
+    },
+    {
+        path: "/",
+        route: emailVerificationRoutes
+    },
 ]
 
 defaultRoutes.forEach((route) => {
