@@ -9,5 +9,5 @@ module.exports = {
     roomModel: require("./room.model"),
     subscriptionModel: require("./subscription.model"),
     userModel: require("./user.model"),
-    emailVerificationModel: require("./EmailVerification.model"),
+    emailVerificationModel: require("./emailVerification.model"),
 }
