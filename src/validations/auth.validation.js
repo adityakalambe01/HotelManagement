@@ -1,11 +1,11 @@
-const {name, email, password} = require("./shared.validation");
+const {name, email, password, phone} = require("./shared.validation");
 const {JOI} = require("../package");
 
 const registerSchema = JOI.object({
     name: name,
     email: email,
     password:password,
-    role: JOI.string().optional()
+    phone: phone
 })
 
 const loginSchema = JOI.object({
