@@ -4,4 +4,5 @@ module.exports = {
     amenityCategoryService: require("./amenityCategory.service"),
     emailVerificationService: require("./emailVerification.service"),
     hotelCategoryService: require("./hotelCategory.service"),
+    amenityService: require("./amenity.service"),
 }
