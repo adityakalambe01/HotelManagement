@@ -4,6 +4,7 @@ const authRoutes = require("./auth.routes");
 const userRoutes = require("./user.routes");
 const amenityCategory = require("./amenityCategory.routes");
 const emailVerificationRoutes = require("./emailVerification.routes");
+const hotelCategoryRoutes = require("./hotelCategory.routes");
 
 const defaultRoutes = [
     {
@@ -19,25 +20,33 @@ const defaultRoutes = [
         route: amenityCategory
     },
     {
+        path: "/hotel-category",
+        route: hotelCategoryRoutes
+    },
+    {
         path: "/",
         route: emailVerificationRoutes
     },
 ]
 
-defaultRoutes.forEach((route) => {
-    router.use(`/api/v1${route.path}`, route.route);
-})
-
-if (config.env === 'development') {
-    defaultRoutes.forEach((route) => {
-      router.use(`/api/v1/dev${route.path}`, route.route);
-    });
-}
-
-if (config.env === 'test') {
-    defaultRoutes.forEach((route) => {
-        router.use(`/api/v1/test${route.path}`, route.route);
-    });
+switch (config.env) {
+    case 'development':
+        defaultRoutes.forEach((route) => {
+            router.use(`/api/dev${route.path}`, route.route);
+        });
+        break;
+    case 'test':
+        defaultRoutes.forEach((route) => {
+            router.use(`/api/test${route.path}`, route.route);
+        });
+        break;
+    case 'production':
+        defaultRoutes.forEach((route) => {
+            router.use(route.path, route.route);
+        })
+        break;
+    default:
+        break;
 }
 
 module.exports = router;
