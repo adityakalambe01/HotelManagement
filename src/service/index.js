@@ -5,4 +5,5 @@ module.exports = {
     emailVerificationService: require("./emailVerification.service"),
     hotelCategoryService: require("./hotelCategory.service"),
     amenityService: require("./amenity.service"),
+    subscriptionPlanService: require("./subscriptionPlan.service"),
 }

@@ -4,4 +4,5 @@ module.exports = {
     emailVerificationRepository: require("./emailVerification.repository"),
     hotelCategoryRepository: require("./hotelCategory.repository"),
     amenityRepository: require("./amenity.repository"),
+    subscriptionPlanRepository: require("./subscriptionPlan.repository"),
 }
