@@ -3,4 +3,5 @@ module.exports = {
     amenityCategoryRepository: require("./amenityCategory.repository"),
     emailVerificationRepository: require("./emailVerification.repository"),
     hotelCategoryRepository: require("./hotelCategory.repository"),
+    amenityRepository: require("./amenity.repository"),
 }
