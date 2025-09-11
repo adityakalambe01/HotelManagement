@@ -4,4 +4,5 @@ module.exports = {
     amenityCategoryController: require("./amenityCategory.controller"),
     emailVerificationController: require("./emailVerification.controller"),
     hotelCategoryController: require("./hotelCategory.controller"),
+    amenityController: require("./amenity.controller"),
 }
