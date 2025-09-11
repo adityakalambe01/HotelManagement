@@ -10,4 +10,5 @@ module.exports = {
     subscriptionModel: require("./subscription.model"),
     userModel: require("./user.model"),
     emailVerificationModel: require("./emailVerification.model"),
+    subscriptionPlanModel: require("./subscriptionPlan.model"),
 }
