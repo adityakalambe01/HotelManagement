@@ -6,6 +6,7 @@ const amenityCategory = require("./amenityCategory.routes");
 const amenityRoutes = require("./amenity.routes");
 const emailVerificationRoutes = require("./emailVerification.routes");
 const hotelCategoryRoutes = require("./hotelCategory.routes");
+const hotelRoutes = require("./hotel.routes");
 const subscriptionPlanRoutes = require("./subscriptionPlan.routes");
 
 const defaultRoutes = [
@@ -28,6 +29,10 @@ const defaultRoutes = [
     {
         path: "/hotel-category",
         route: hotelCategoryRoutes
+    },
+    {
+        path: "/hotel",
+        route: hotelRoutes
     },
     {
         path: "/subscription-plans",
