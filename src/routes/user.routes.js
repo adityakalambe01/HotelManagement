@@ -3,11 +3,8 @@ const router = express.Router();
 
 const { asyncHandler } = require("../middlewares/asyncHandler.middleware");
 const { userController } = require("../controllers");
-const authenticate = require("../middlewares/authenticate.middleware");
 const checkPermission = require("../middlewares/checkPermission.middleware");
 
-
-router.use(authenticate);
 router
     .get("/", checkPermission("read_user"), asyncHandler(userController.queryUsers))
     .get("/info", asyncHandler(userController.userInfo))
