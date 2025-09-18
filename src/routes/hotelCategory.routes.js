@@ -1,8 +1,5 @@
 const router = require("../package").express.Router();
-const authenticate = require("../middlewares/authenticate.middleware");
 const {hotelCategoryController:{newHotelCategory, updateHotelCategory, deleteHotelCategory, getHotelCategory, getAllHotelCategories}} = require("../controllers")
-
-router.use(authenticate);
 
 router.route("/")
     .get(getAllHotelCategories)
