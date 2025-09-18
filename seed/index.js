@@ -1,22 +1,8 @@
 const { connectToDatabase, disconnectToDatabase } = require("../src/config/db.config");
 const { mongoose } = require("../src/config");
 const { amenityCategories, amenitiesList } = require("./amenities");
-const {hotelCategories} = require("./hotel")
-
-// ==================== Logger Helpers ====================
-function header(title = "") {
-    const startTime = new Date();
-    console.log(`\n[${startTime.toLocaleTimeString()}] 🔹 START: ${title}`);
-    console.log("=".repeat(60));
-    return startTime; // return start time so footer can use it
-}
-
-function footer(title = "", startTime) {
-    const endTime = new Date();
-    const duration = ((endTime - startTime) / 1000).toFixed(2); // in seconds
-    console.log("=".repeat(60));
-    console.log(`[${endTime.toLocaleTimeString()}] ✅ END: ${title} (took ${duration}s)\n`);
-}
+const {hotelCategories} = require("./hotel");
+const { header, footer } = require("./utils");
 
 // ==================== Seeder Runner ====================
 async function index() {
