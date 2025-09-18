@@ -1,5 +1,4 @@
 const router = require("../package").express.Router();
-const authenticate = require("../middlewares/authenticate.middleware");
 const {
     subscriptionPlanController: {
         createPlan,
@@ -12,8 +11,6 @@ const {
         updateByType
     }
 } = require("../controllers");
-
-router.use(authenticate);
 
 router
     .route('/')
