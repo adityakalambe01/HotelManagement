@@ -1,5 +1,4 @@
 const router = require("../package").express.Router();
-const authenticate = require("../middlewares/authenticate.middleware");
 
 const {
     hotelController: {
@@ -31,9 +30,6 @@ const {
         aggregateHotelsByState
     }
 } = require("../controllers");
-
-
-router.use(authenticate);
 
 // CRUD routes
 router
