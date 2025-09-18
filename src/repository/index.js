@@ -5,4 +5,5 @@ module.exports = {
     hotelCategoryRepository: require("./hotelCategory.repository"),
     amenityRepository: require("./amenity.repository"),
     subscriptionPlanRepository: require("./subscriptionPlan.repository"),
+    hotelRepository: require("./hotel.repository"),
 }

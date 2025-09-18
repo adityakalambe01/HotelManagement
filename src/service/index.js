@@ -1,9 +1,10 @@
 module.exports = {
     authService: require("./Auth.service"),
     userService: require("./user.service"),
-    amenityCategoryService: require("./amenityCategory.service"),
     emailVerificationService: require("./emailVerification.service"),
-    hotelCategoryService: require("./hotelCategory.service"),
+    amenityCategoryService: require("./amenityCategory.service"),
     amenityService: require("./amenity.service"),
     subscriptionPlanService: require("./subscriptionPlan.service"),
+    hotelCategoryService: require("./hotelCategory.service"),
+    hotelService: require("./hotel.service"),
 }

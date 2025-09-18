@@ -1,9 +1,15 @@
 module.exports = {
+    // User & Auth
     authController: require("./Auth.controller"),
     userController: require("./user.controller"),
-    amenityCategoryController: require("./amenityCategory.controller"),
+    // Email Verification
     emailVerificationController: require("./emailVerification.controller"),
-    hotelCategoryController: require("./hotelCategory.controller"),
+    // Amenity
+    amenityCategoryController: require("./amenityCategory.controller"),
     amenityController: require("./amenity.controller"),
+    // Hotel
+    hotelCategoryController: require("./hotelCategory.controller"),
+    hotelController: require("./hotel.controller"),
+    // Subscription
     subscriptionPlanController: require("./subscriptionPlan.controller"),
 }
