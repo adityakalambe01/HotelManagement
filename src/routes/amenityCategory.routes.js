@@ -1,8 +1,5 @@
 const router = require("../package").express.Router();
-const authenticate = require("../middlewares/authenticate.middleware");
 const {amenityCategoryController:{newAmenityCategory, getAllAmenityCategories, getAmenityCategory, deleteAmenityCategory, updateAmenityCategory}} = require("../controllers")
-
-router.use(authenticate);
 
 router
     .route("/")
