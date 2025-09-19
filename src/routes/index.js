@@ -1,5 +1,5 @@
 const router = require("../package").express.Router();
-const config = require("../config");
+const {env} = require("../config");
 const authRoutes = require("./auth.routes");
 const userRoutes = require("./user.routes");
 const amenityCategory = require("./amenityCategory.routes");
@@ -8,6 +8,7 @@ const emailVerificationRoutes = require("./emailVerification.routes");
 const hotelCategoryRoutes = require("./hotelCategory.routes");
 const hotelRoutes = require("./hotel.routes");
 const subscriptionPlanRoutes = require("./subscriptionPlan.routes");
+const roomRoutes = require("./room.routes");
 const {authLimiter, apiLimiter} = require("../middlewares/rateLimiter.middleware");
 const authenticate = require("../middlewares/authenticate.middleware");
 
@@ -48,30 +49,25 @@ const defaultRoutes = [
         middlewares: [authenticate, apiLimiter]
     },
     {
+        path: "/room",
+        route: roomRoutes,
+        middlewares: [authenticate, apiLimiter]
+    },
+    {
         path: "/",
         route: emailVerificationRoutes,
         middlewares: [apiLimiter]
     },
 ]
 
-switch (config.env) {
-    case 'development':
-        defaultRoutes.forEach((route) => {
-            router.use(`/api/dev${route.path}`, ...route.middlewares, route.route);
-        });
-        break;
-    case 'test':
-        defaultRoutes.forEach((route) => {
-            router.use(`/api/test${route.path}`, ...route.middlewares, route.route);
-        });
-        break;
-    case 'production':
-        defaultRoutes.forEach((route) => {
-            router.use(route.path, ...route.middlewares, route.route);
-        })
-        break;
-    default:
-        break;
-}
+const prefixUrl = env === 'production'
+    ? ''
+    : env === 'test'
+        ? '/api/test'
+        : '/api/dev';
+
+defaultRoutes.forEach((route) => {
+    router.use(`${prefixUrl}${route.path}`, ...route.middlewares, route.route);
+});
 
 module.exports = router;
