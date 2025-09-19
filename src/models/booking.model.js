@@ -134,4 +134,4 @@ bookingSchema.plugin(safeSoftDeletePlugin, {deletedAtField: 'deletedAt'});
 bookingSchema.plugin(paginatePlugin);
 bookingSchema.plugin(privateFieldsPlugin);
 
-module.exports = mongoose.model('Booking', bookingSchema, "hotel_room_bookings");
+module.exports = mongoose.model('Booking', bookingSchema, "Hotel Room Bookings");
