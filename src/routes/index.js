@@ -7,6 +7,7 @@ const amenityRoutes = require("./amenity.routes");
 const emailVerificationRoutes = require("./emailVerification.routes");
 const hotelCategoryRoutes = require("./hotelCategory.routes");
 const hotelRoutes = require("./hotel.routes");
+const subscriptionRoutes = require("./subscription.routes");
 const subscriptionPlanRoutes = require("./subscriptionPlan.routes");
 const roomRoutes = require("./room.routes");
 const {authLimiter, apiLimiter} = require("../middlewares/rateLimiter.middleware");
@@ -41,6 +42,11 @@ const defaultRoutes = [
     {
         path: "/hotel",
         route: hotelRoutes,
+        middlewares: [authenticate, apiLimiter]
+    },
+    {
+        path: "/subscription",
+        route: subscriptionRoutes,
         middlewares: [authenticate, apiLimiter]
     },
     {
