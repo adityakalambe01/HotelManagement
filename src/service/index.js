@@ -5,6 +5,7 @@ module.exports = {
     amenityCategoryService: require("./amenityCategory.service"),
     amenityService: require("./amenity.service"),
     subscriptionPlanService: require("./subscriptionPlan.service"),
+    subscriptionService: require("./subscription.service"),
     hotelCategoryService: require("./hotelCategory.service"),
     hotelService: require("./hotel.service"),
     roomService: require("./room.service"),
