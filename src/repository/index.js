@@ -6,5 +6,6 @@ module.exports = {
     amenityRepository: require("./amenity.repository"),
     subscriptionPlanRepository: require("./subscriptionPlan.repository"),
     hotelRepository: require("./hotel.repository"),
-    roomRepository: require("./room.repository")
+    roomRepository: require("./room.repository"),
+    paymentRepository: require("./payment.repository"),
 }
