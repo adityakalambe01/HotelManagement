@@ -14,4 +14,6 @@ module.exports = {
     subscriptionPlanController: require("./subscriptionPlan.controller"),
     // Room
     roomController: require("./room.controller"),
+    // Payment
+    paymentController: require("./payment.controller"),
 }

@@ -8,4 +8,5 @@ module.exports = {
     hotelCategoryService: require("./hotelCategory.service"),
     hotelService: require("./hotel.service"),
     roomService: require("./room.service"),
+    paymentService: require("./payment.service"),
 }
