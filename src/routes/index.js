@@ -9,6 +9,7 @@ const hotelCategoryRoutes = require("./hotelCategory.routes");
 const hotelRoutes = require("./hotel.routes");
 const subscriptionPlanRoutes = require("./subscriptionPlan.routes");
 const roomRoutes = require("./room.routes");
+const paymentRoutes = require("./payment.routes");
 const {authLimiter, apiLimiter} = require("../middlewares/rateLimiter.middleware");
 const authenticate = require("../middlewares/authenticate.middleware");
 
@@ -51,6 +52,11 @@ const defaultRoutes = [
     {
         path: "/room",
         route: roomRoutes,
+        middlewares: [authenticate, apiLimiter]
+    },
+    {
+        path: "/payment",
+        route: paymentRoutes,
         middlewares: [authenticate, apiLimiter]
     },
     {
