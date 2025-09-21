@@ -3,6 +3,16 @@ const { httpCodes } = require("../config")
 const { ApiError, pick} = require("../utils");
 const {triggerEmailVerification} = require("./emailVerification.service")
 
+
+/**
+ * Register a new user in the system
+ * @param {Object} newUser - User information for registration
+ * @param {string} newUser.email - Email address of the user
+ * @param {string} newUser.password - Password for the user account
+ * @param {string} newUser.name - Name of the user
+ * @returns {Promise<Object>} Created user object
+ * @throws {ApiError} If user already exists or registration fails
+ */
 exports.register = async (newUser) => {
     const existingUser = await userRepository.findByEmail(newUser.email, '');
     if (existingUser) {
@@ -16,6 +26,15 @@ exports.register = async (newUser) => {
     return user;
 }
 
+/**
+ * Authenticate user and generate access token
+ * @param {string} email - User's email address
+ * @param {string} password - User's password
+ * @returns {Promise<Object>} Object containing authentication token and user details
+ * @throws {ApiError} If authentication fails, email not verified, or user not found
+ * @property {string} token - JWT authentication token
+ * @property {Object} user - User object containing user details
+ */
 exports.login = async (email, password) => {
     let user = await userRepository.findByEmail(email, '', 2);
     if (!user) {
@@ -31,8 +50,6 @@ exports.login = async (email, password) => {
         )
     }
 
-    // user = pick(user.toObject(),['_id', 'name', 'email', 'createdAt', 'updatedAt'])
-    // user.role.permissions = user.role.permissions.map(p => ({_id: p._id, name: p.name, description: p.description}));
-    const token = await userRepository.createToken(pick(user, ['_id', 'name', 'email']));
+    const token = await userRepository.createToken(pick(user.toObject(), ['_id', 'name', 'email']));
     return {token, user};
 }
