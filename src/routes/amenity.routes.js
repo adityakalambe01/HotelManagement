@@ -22,7 +22,7 @@ router
 router
     .route('/:id')
     .get(getAmenityById)
-    .patch(updateAmenityById)
+    .put(updateAmenityById)
     .delete(removeAmenityById);
 
 router
