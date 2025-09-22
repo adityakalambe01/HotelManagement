@@ -13,70 +13,94 @@ const roomRoutes = require("./room.routes");
 const paymentRoutes = require("./payment.routes");
 const {authLimiter, apiLimiter} = require("../middlewares/rateLimiter.middleware");
 const authenticate = require("../middlewares/authenticate.middleware");
+const {
+    mainIndex:{
+        AUTH,
+        USER,
+        AMENITY_CATEGORY,
+        AMENITY,
+        HOTEL_CATEGORY,
+        HOTEL,
+        SUBSCRIPTION,
+        SUBSCRIPTION_PLANS,
+        ROOM,
+        PAYMENT,
+        EMAIL_VERIFICATION
+    },
+    nodeEnv:{
+        PRODUCTION_ENV,
+        DEVELOPMENT_ENV,
+        TEST_ENV
+    },
+    prefixURLs:{
+        PRODUCTION_PREFIX_URL,
+        DEVELOPMENT_PREFIX_URL,
+        TEST_PREFIX_URL
+    }} = require("../constant");
 
 const defaultRoutes = [
     {
-        path: "/auth",
+        path: AUTH,
         route: authRoutes,
         middlewares: [authLimiter]
     },
     {
-        path: "/user",
+        path: USER,
         route: userRoutes,
         middlewares: [authenticate, apiLimiter]
     },
     {
-        path: "/amenity-category",
+        path: AMENITY_CATEGORY,
         route: amenityCategory,
         middlewares: [authenticate, apiLimiter]
     },
     {
-        path: "/amenity",
+        path: AMENITY,
         route: amenityRoutes,
         middlewares: [authenticate, apiLimiter]
     },
     {
-        path: "/hotel-category",
+        path: HOTEL_CATEGORY,
         route: hotelCategoryRoutes,
         middlewares: [authenticate, apiLimiter]
     },
     {
-        path: "/hotel",
+        path: HOTEL,
         route: hotelRoutes,
         middlewares: [authenticate, apiLimiter]
     },
     {
-        path: "/subscription",
+        path: SUBSCRIPTION,
         route: subscriptionRoutes,
         middlewares: [authenticate, apiLimiter]
     },
     {
-        path: "/subscription-plans",
+        path: SUBSCRIPTION_PLANS,
         route: subscriptionPlanRoutes,
         middlewares: [authenticate, apiLimiter]
     },
     {
-        path: "/room",
+        path: ROOM,
         route: roomRoutes,
         middlewares: [authenticate, apiLimiter]
     },
     {
-        path: "/payment",
+        path: PAYMENT,
         route: paymentRoutes,
         middlewares: [authenticate, apiLimiter]
     },
     {
-        path: "/",
+        path: EMAIL_VERIFICATION,
         route: emailVerificationRoutes,
         middlewares: [apiLimiter]
     },
 ]
 
-const prefixUrl = env === 'production'
-    ? ''
-    : env === 'test'
-        ? '/api/test'
-        : '/api/dev';
+const prefixUrl = env === PRODUCTION_ENV
+    ? PRODUCTION_PREFIX_URL
+    : env === TEST_ENV
+        ? TEST_PREFIX_URL
+        : DEVELOPMENT_PREFIX_URL;
 
 defaultRoutes.forEach((route) => {
     router.use(`${prefixUrl}${route.path}`, ...route.middlewares, route.route);
