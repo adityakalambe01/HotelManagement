@@ -9,6 +9,7 @@ const mainIndex = {
     SUBSCRIPTION_PLANS: '/subscription-plans',
     ROOM: '/room',
     PAYMENT: '/payment',
+    BOOKING: '/booking',
     EMAIL_VERIFICATION: '/',
 }
 
