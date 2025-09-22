@@ -9,4 +9,5 @@ module.exports = {
     hotelRepository: require("./hotel.repository"),
     roomRepository: require("./room.repository"),
     paymentRepository: require("./payment.repository"),
+    bookingRepository: require("./booking.repository")
 }
