@@ -17,4 +17,6 @@ module.exports = {
     roomController: require("./room.controller"),
     // Payment
     paymentController: require("./payment.controller"),
+    // Booking
+    bookingController: require("./booking.controller"),
 }
