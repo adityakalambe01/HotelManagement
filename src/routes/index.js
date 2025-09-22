@@ -10,6 +10,7 @@ const hotelRoutes = require("./hotel.routes");
 const subscriptionRoutes = require("./subscription.routes");
 const subscriptionPlanRoutes = require("./subscriptionPlan.routes");
 const roomRoutes = require("./room.routes");
+const bookingRoutes = require("./booking.routes");
 const paymentRoutes = require("./payment.routes");
 const {authLimiter, apiLimiter} = require("../middlewares/rateLimiter.middleware");
 const authenticate = require("../middlewares/authenticate.middleware");
@@ -25,7 +26,8 @@ const {
         SUBSCRIPTION_PLANS,
         ROOM,
         PAYMENT,
-        EMAIL_VERIFICATION
+        EMAIL_VERIFICATION,
+        BOOKING
     },
     nodeEnv:{
         PRODUCTION_ENV,
@@ -87,6 +89,11 @@ const defaultRoutes = [
     {
         path: PAYMENT,
         route: paymentRoutes,
+        middlewares: [authenticate, apiLimiter]
+    },
+    {
+        path: BOOKING,
+        route: bookingRoutes,
         middlewares: [authenticate, apiLimiter]
     },
     {
