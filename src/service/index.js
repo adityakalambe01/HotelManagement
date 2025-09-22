@@ -10,4 +10,5 @@ module.exports = {
     hotelService: require("./hotel.service"),
     roomService: require("./room.service"),
     paymentService: require("./payment.service"),
+    bookingService: require("./booking.service")
 }
