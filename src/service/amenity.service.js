@@ -6,6 +6,9 @@ const {
         updateAmenity,
         softDeleteAmenity,
         getAmenitiesGroupedByCategory
+    },
+    amenityCategoryRepository:{
+        category:getCategoryByID
     }
 } = require("../repository");
 const {ApiError} = require("../utils");
@@ -77,5 +80,9 @@ exports.removeAmenityById = async (id) => {
  * @returns {Promise<Object>} Amenities grouped by category
  */
 exports.amenitiesGroupedByCategory = async () => {
-    return await getAmenitiesGroupedByCategory();
+    let result = await getAmenitiesGroupedByCategory();
+    
+    return await Promise.all(
+        result.map(async(r)=> ({...r, category: await getCategoryByID(r.category)}))
+    );
 };
