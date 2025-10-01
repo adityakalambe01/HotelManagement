@@ -12,6 +12,7 @@ const {asyncHandler} = require("../middlewares/asyncHandler.middleware");
 const {httpCodes} = require("../config");
 const {ApiError} = require("../utils");
 const {pick, reqQueryFilterOptionsPicker, paramsPicker} = require("../utils");
+const { redisUtil, redisKeys:{groupedAmenities}} = require("../redis")
 
 /**
  * Creates a new amenity
@@ -81,7 +82,11 @@ exports.removeAmenityById = asyncHandler(async (req, res) => {
  * @returns {Promise<Object>} Categorized amenities with success message
  */
 exports.getAmenitiesGroupedByCategory = asyncHandler(async (req, res) => {
-    const result = await amenitiesGroupedByCategory();
+    let result = await redisUtil.get(groupedAmenities);
+    if(!result){
+        result = await amenitiesGroupedByCategory();
+        await redisUtil.save(groupedAmenities, result)
+    }
     return res.ok(result, "Successfully retrieved categorized amenities list");
 });
 

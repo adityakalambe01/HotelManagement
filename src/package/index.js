@@ -7,4 +7,5 @@ module.exports = {
     jwtToken: require('jsonwebtoken'),
     mongoose: require('mongoose'),
     bcrypt: require('bcrypt'),
+    redis: require('redis')
 }
