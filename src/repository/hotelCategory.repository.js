@@ -36,3 +36,12 @@ exports.hotelCategories = async (filter, options) => await HotelCategory.paginat
  * @returns {Promise<Object>} The found hotel category
  */
 exports.HotelCategory = async (id) => await HotelCategory.findById(id);
+
+
+/**
+ * Retrieves all hotel categories without pagination
+ * @param {Object} filter - The filter criteria for hotel categories
+ * @param {Object} options - The pagination and sorting options
+ * @returns {Promise<Object>} The paginated list of hotel categories
+ */
+exports.hotelCategoriesWithoutPagination = async (filter, options) => await HotelCategory.find(filter).setOptions(options);

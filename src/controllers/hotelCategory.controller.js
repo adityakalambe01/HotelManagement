@@ -4,11 +4,13 @@ const {
         updateHotelCategory,
         deleteHotelCategory,
         getAllHotelCategories,
-        getHotelCategory
+        getHotelCategory,
+        getAllHotelCategoriesWithoutPagination
     }
 } = require('../service');
 const {asyncHandler} = require('../middlewares/asyncHandler.middleware');
 const {pick, reqQueryFilterOptionsPicker, paramsPicker} = require("../utils");
+const {redisUtil, redisKeys:{hotelCatWithoutPagination}} = require("../redis")
 
 /**
  * Extracts relevant hotel category fields from request body
@@ -80,3 +82,18 @@ exports.getHotelCategory = asyncHandler(async (req, res) => {
     return res.ok(hotelCategory, "Hotel category has been retrieved successfully");
 })
 
+/**
+ * Gets all hotel categories with optional filters
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ * @returns {Promise<Object>} List of hotel categories with success message
+ */
+exports.getAllHotelCategoriesWithoutPagination = asyncHandler(async (req, res) => {
+    const {filter, options} = reqQueryFilterOptionsPicker(req);
+    let hotelCategories = await redisUtil.get(hotelCatWithoutPagination);
+    if(!hotelCategories){
+        hotelCategories = await getAllHotelCategoriesWithoutPagination(filter, options);
+        await redisUtil.save(hotelCatWithoutPagination, hotelCategories)
+    }
+    return res.ok(hotelCategories, "Hotel categories have been retrieved successfully");
+})
