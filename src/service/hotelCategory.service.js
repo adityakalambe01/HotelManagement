@@ -4,7 +4,8 @@ const {
         updateHotel,
         deleteHotel,
         hotelCategories,
-        hotelCategory
+        hotelCategory,
+        hotelCategoriesWithoutPagination
     }
 } = require("../repository");
 const {ApiError} = require("../utils");
@@ -89,3 +90,11 @@ exports.deleteHotelCategory = async (_id) => {
  * @returns {Promise<Object>} The paginated list of hotel categories
  */
 exports.getAllHotelCategories = async (filter, options) => await hotelCategories(filter, options);
+
+/**
+ * Retrieves all hotel categories with optional filtering and pagination
+ * @param {Object} filter - The filter criteria for hotel categories
+ * @param {Object} options - The sorting options
+ * @returns {Promise<Object>} The list of hotel categories
+ */
+exports.getAllHotelCategoriesWithoutPagination = async (filter={}, options) => await hotelCategoriesWithoutPagination(filter, options);
